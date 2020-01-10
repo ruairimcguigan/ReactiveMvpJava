@@ -5,7 +5,7 @@ android {
     buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "com.demo.reactivemvp"
-        minSdkVersion 15
+        minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -31,8 +31,15 @@ dependencies {
     testImplementation 'com.google.truth:truth:0.42'
     testImplementation 'org.mockito:mockito-core:2.21.0'
 
-    // Dagger
-    implementation 'com.google.dagger:dagger:2.19'
+
+    /* Dagger2 - We are going to use dagger.android which includes
+     * support for Activity and fragment injection so we need to include
+     * the following dependencies */
+    implementation 'com.google.dagger:dagger-android:2.19'
+    implementation 'com.google.dagger:dagger-android-support:2.19'
+    annotationProcessor 'com.google.dagger:dagger-android-processor:2.19'
+
+    /* Dagger2 - default dependency */
     annotationProcessor 'com.google.dagger:dagger-compiler:2.19'
 
     // RxJava
@@ -48,4 +55,8 @@ dependencies {
     androidTestImplementation 'androidx.test:rules:1.1.1'
     androidTestImplementation 'com.github.andrzejchm.RESTMock:android:0.3.3'
     annotationProcessor 'com.google.dagger:dagger-compiler:2.19'
+
+    // Memory maintenance
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.1'
+
 }
