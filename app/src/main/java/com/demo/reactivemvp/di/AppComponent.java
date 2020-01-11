@@ -1,12 +1,9 @@
 package com.demo.reactivemvp.di;
 
-import android.app.Application;
 import com.demo.reactivemvp.App;
 import dagger.BindsInstance;
 import dagger.Component;
-import dagger.android.AndroidInjectionModule;
-
-import javax.inject.Singleton;
+import dagger.android.support.AndroidSupportInjectionModule;
 
 /*
  * We mark this interface with the @Component annotation.
@@ -18,11 +15,11 @@ import javax.inject.Singleton;
  * */
 
 @Component(modules = {
-        AndroidInjectionModule.class,
+        AndroidSupportInjectionModule.class,
         ActivityModule.class,
         FragmentModule.class
 })
-@Singleton
+//@Singleton
 public interface AppComponent {
 
     /* We will call this builder interface from our custom Application class.

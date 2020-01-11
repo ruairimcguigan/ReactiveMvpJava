@@ -6,9 +6,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
+import com.demo.reactivemvp.R;
+import com.demo.reactivemvp.base.BaseFragment;
+import dagger.android.support.AndroidSupportInjection;
+import timber.log.Timber;
 
-public class SomeFeatureFragment extends Fragment {
+import javax.inject.Inject;
+
+public class SomeFeatureFragment extends BaseFragment {
+
+    @Inject SomeFeatureAdapter adapter;
 
     @Nullable
     @Override
@@ -17,10 +24,14 @@ public class SomeFeatureFragment extends Fragment {
             @Nullable ViewGroup container,
             @Nullable Bundle savedInstanceState
     ) {
-        return super.onCreateView(
-                inflater,
-                container,
-                savedInstanceState
-        );
+        AndroidSupportInjection.inject(this);
+
+        if (adapter != null){
+            Timber.d("good");
+        } else {
+            Timber.d("bad");
+        }
+
+        return inflater.inflate(R.layout.some_fragment, container, false);
     }
 }
