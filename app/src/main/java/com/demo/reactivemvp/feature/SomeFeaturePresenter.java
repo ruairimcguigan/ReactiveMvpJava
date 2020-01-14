@@ -7,10 +7,15 @@ import javax.inject.Inject;
 
 public class SomeFeaturePresenter implements Presenter{
 
+    private final SomeFeatureContract.View view;
     private SomeFeatureAdapter adapter;
 
     @Inject
-    public SomeFeaturePresenter(SomeFeatureAdapter adapter) {
+    public SomeFeaturePresenter(
+            SomeFeatureActivity view,
+            SomeFeatureAdapter adapter
+    ) {
+        this.view = view;
         this.adapter = adapter;
 
         if (adapter != null) {
@@ -22,7 +27,7 @@ public class SomeFeaturePresenter implements Presenter{
 
     @Override
     public void someFeaturePresenterMethod() {
-
+        view.someFeatureViewContractMethod();
     }
 
     @Override

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import com.demo.reactivemvp.R;
@@ -35,6 +36,19 @@ public class SomeFeatureActivity extends BaseActivity
         initViews();
     }
 
+    private void initViews() {
+        FloatingActionButton fab = findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+
+                presenter.someFeaturePresenterMethod();
+            }
+        });
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
@@ -54,23 +68,12 @@ public class SomeFeatureActivity extends BaseActivity
 
     @Override
     public void someFeatureViewContractMethod() {
-
+        Toast.makeText(this, "yeah clicked", Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void anotherFeatureViewContractMethod() {
 
-    }
-
-    private void initViews() {
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
     }
 
     private void showSomeFeatureFragment() {
